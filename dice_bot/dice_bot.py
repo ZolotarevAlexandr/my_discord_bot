@@ -22,7 +22,7 @@ class Dice(commands.Cog):
                        'sides]')
 
     @commands.command(name='dice')
-    async def throw_dice(self, ctx, dice_type: int, is_custom: bool = False):
+    async def throw_dice(self, ctx, dice_type: int, *, is_custom: bool = False):
         if dice_type not in [4, 6, 8, 10, 12, 20, 100] and not is_custom:
             await ctx.send('Wrong dice type! Classic are 4, 6, 8, 10, 12, 20, 100. You can use '
                            '/custom_dice to input any integer value')
@@ -31,7 +31,7 @@ class Dice(commands.Cog):
 
     @commands.command(name='custom_dice')
     async def throw_custom_dice(self, ctx, dice_type: int):
-        await self.throw_dice(ctx, dice_type, True)
+        await self.throw_dice(ctx, dice_type, is_custom=True)
 
 
 class MyBot(commands.Bot):
